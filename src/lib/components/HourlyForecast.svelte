@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { weatherStore } from '$lib/stores/weatherStore';
+	import { weatherStore } from '$lib/weatherStore';
 	import WeatherIcon from './WeatherIcon.svelte';
 
 	let weather = $weatherStore;

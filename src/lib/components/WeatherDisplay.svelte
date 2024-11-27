@@ -1,7 +1,6 @@
 <script lang="ts">
-	import type { WeatherData } from '$lib/stores/weatherStore';
-	import { weatherStore } from '$lib/stores/weatherStore';
-	import { formatPressure, getWeatherDescription } from '$lib/utils/utils';
+	import { formatPressure, getWeatherDescription } from '$lib/utils';
+	import { weatherStore } from '$lib/weatherStore';
 	import { Wind, WindArrowDown } from 'lucide-svelte';
 	import WeatherIcon from './WeatherIcon.svelte';
 

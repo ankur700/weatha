@@ -56,4 +56,4 @@
   let Icon = $derived(getWeatherIcon(code));
 </script>
 
-  <Icon class={sizeClasses[size]} />
+<Icon class={sizeClasses[size]} />

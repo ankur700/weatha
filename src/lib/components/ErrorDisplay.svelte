@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { CircleAlert } from 'lucide-svelte';
 	import { fade } from 'svelte/transition';
-	export let error: string;
+	let { error } = $props();
 </script>
 
 <aside transition:fade={{ duration: 200 }} class="alert variant-glass-error">

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { weatherStore } from '$lib/stores/weatherStore';
-	import { getDayFromISOTimestamp } from '$lib/utils/utils';
+	import { getDayFromISOTimestamp } from '$lib/utils';
+	import { weatherStore } from '$lib/weatherStore';
 	import { ArrowDown, ArrowUp, CloudRain, Wind } from 'lucide-svelte';
 	import WeatherIcon from './WeatherIcon.svelte';
 
