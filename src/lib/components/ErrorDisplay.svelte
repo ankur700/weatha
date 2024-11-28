@@ -7,7 +7,7 @@
 <aside transition:fade={{ duration: 200 }} class="alert variant-glass-error">
 	<CircleAlert class="w-5 h-5"/>
 	<div class="alert-message">
-		<h3 class="h3">Error:</h3>
+		<h3 class="h3">Error: %sveltekit.status%</h3>
 		<p>{error}</p>
 	</div>
 </aside>

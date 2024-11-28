@@ -1,3 +1,30 @@
+import type { PopupSettings } from '@skeletonlabs/skeleton';
+
+export const LocateMePopup: PopupSettings = {
+	event: 'hover',
+	target: 'locateMePopup',
+	placement: 'top'
+};
+
+export const ClearAllPopup: PopupSettings = {
+	event: 'hover',
+	target: 'clearAllPopup',
+	placement: 'top'
+};
+
+export const popupFocusBlur: PopupSettings = {
+	event: 'focus-blur',
+	target: 'popupFocusBlur',
+	placement: 'top'
+};
+
+export const popupCombobox: PopupSettings = {
+	event: 'click',
+	target: 'popupCombobox',
+	placement: 'bottom',
+	closeQuery: '.listbox-item'
+};
+
 export function isChromeExtensionContext(): boolean {
 	// Check if we're in a Chrome extension environment
 	return !!(typeof chrome !== 'undefined' && chrome.runtime && chrome.runtime.id);

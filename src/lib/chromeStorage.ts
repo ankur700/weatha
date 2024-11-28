@@ -1,8 +1,8 @@
-export class WeatherStorageManager {
-	private static STORAGE_KEY = 'weatherHistory';
+export class StorageManager {
+	private static STORAGE_KEY = 'history';
 	private static MAX_ENTRIES = 5;
 
-	// Retrieve current weather history
+	// Retrieve current history
 	private static async getHistory(): Promise<StoredEntry[]> {
 		return new Promise((resolve) => {
 			chrome.storage.local.get(this.STORAGE_KEY, (result) => {
@@ -43,7 +43,7 @@ export class WeatherStorageManager {
 				});
 			});
 		} catch (error) {
-			console.error('Error saving weather data:', error);
+			console.error('Error saving data:', error);
 			throw error;
 		}
 	}
