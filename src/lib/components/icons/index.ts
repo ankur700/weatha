@@ -1,0 +1,27 @@
+import CircleXIcon from './CircleXIcon.svelte';
+import CloudFogIcon from './CloudFogIcon.svelte';
+import CloudIcon from './CloudIcon.svelte';
+import CloudLightningIcon from './CloudLightningIcon.svelte';
+import CloudRainIcon from './CloudRainIcon.svelte';
+import CloudSnowIcon from './CloudSnowIcon.svelte';
+import CloudSunIcon from './CloudSunIcon.svelte';
+import HistoryIcon from './HistoryIcon.svelte';
+import MapPinIcon from './MapPinIcon.svelte';
+import MoonIcon from './MoonIcon.svelte';
+import SunIcon from './SunIcon.svelte';
+import Wind from './Wind.svelte';
+import WindArrowDown from './WindArrowDown.svelte';
+
+export const WindIcon = Wind;
+export const WindArrowDownIcon = WindArrowDown;
+export const CloudFog = CloudFogIcon;
+export const Cloud = CloudIcon;
+export const CloudLightning = CloudLightningIcon;
+export const CloudRain = CloudRainIcon;
+export const CloudSnow = CloudSnowIcon;
+export const CloudSun = CloudSunIcon;
+export const Sun = SunIcon;
+export const CircleX = CircleXIcon;
+export const History = HistoryIcon;
+export const MapPin = MapPinIcon;
+export const Moon = MoonIcon;
