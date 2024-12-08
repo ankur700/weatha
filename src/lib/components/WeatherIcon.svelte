@@ -1,13 +1,13 @@
 <script lang="ts">
   import {
-  	CloudFogIcon,
-  	CloudIcon,
-  	CloudLightningIcon,
-  	CloudRainIcon,
-  	CloudSnowIcon,
-  	CloudSunIcon,
-  	SunIcon
-  } from 'lucide-svelte';
+  	Cloud,
+  	CloudFog,
+  	CloudLightning,
+  	CloudRain,
+  	CloudSnow,
+  	CloudSun,
+  	Sun,
+  } from '$lib/components/icons';
 
   // export let code: WeatherCode;
   let { code, size }: { code: number, size: keyof typeof sizeClasses } = $props();
@@ -21,35 +21,35 @@
   function getWeatherIcon(code: number ) {
     switch (code) {
       case 0:
-        return SunIcon;
+        return Sun;
       case 1:
       case 2:
-        return CloudSunIcon;
+        return CloudSun;
       case 3:
-        return CloudIcon;
+        return Cloud;
       case 45:
       case 48:
-        return CloudFogIcon;
+        return CloudFog;
       case 51:
       case 53:
       case 55:
       case 61:
       case 63:
       case 65:
-        return CloudRainIcon;
+        return CloudRain;
       case 71:
       case 73:
       case 75:
       case 77:
       case 85:
       case 86:
-        return CloudSnowIcon;
+        return CloudSnow;
       case 95:
       case 96:
       case 99:
-        return CloudLightningIcon;
+        return CloudLightning;
       default:
-        return CloudIcon;
+        return Cloud;
     }
   }
 

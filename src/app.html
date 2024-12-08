@@ -4,9 +4,20 @@
 		<meta charset="utf-8" />
 		<link rel="icon" href="%sveltekit.assets%/images/icon16.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1"  />
+		<!-- <script>
+					async function setTheme() {
+						const theme = await chrome.storage.local.get('theme');
+						theme === 'dark' ||
+							(!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)
+							? document.documentElement.classList.add('dark')
+							: document.documentElement.classList.remove('dark');
+					}
+
+					setTheme();
+				</script> -->
 		%sveltekit.head%
 	</head>
-	<body data-theme="vintage" data-sveltekit-preload-data="hover" class="p-8">
+	<body data-theme="vintage" data-sveltekit-preload-data="hover" class="p-4">
 		<div style="display: contents">%sveltekit.body%</div>
 	</body>
 </html>

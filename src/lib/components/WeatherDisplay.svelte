@@ -1,7 +1,7 @@
 <script lang="ts">
+	import { WindArrowDownIcon, WindIcon } from '$lib/components/icons';
+	import { weatherStore } from '$lib/stores/weatherStore';
 	import { formatPressure, getWeatherDescription } from '$lib/utils';
-	import { weatherStore } from '$lib/weatherStore';
-	import { Wind, WindArrowDown } from 'lucide-svelte';
 	import WeatherIcon from './WeatherIcon.svelte';
 
 	let { address } = $props();
@@ -20,8 +20,8 @@
 				<div>
 					<p class="font-semibold">{address}</p>
 					<div class="flex items-baseline">
-						<span class="text-8xl">{Math.round(weather.current.temperature2m)}°</span>
-						<span class="text-sm text-surface-300">Feels like {Math.round(weather.current.apparentTemperature)}°</span>
+						<p class="text-8xl">{Math.round(weather.current.temperature2m)}°</p>
+						<p class="text-sm">Feels like {Math.round(weather.current.apparentTemperature)}°</p>
 					</div>
 				</div>
 			</div>
@@ -40,13 +40,13 @@
 					</div>
 					<div class="flex gap-2">
 						<div class="flex space-x-1">
-							<WindArrowDown class="h-4 w-4" />
+							<WindArrowDownIcon class="h-4 w-4" />
 							<span class="text-sm"
 								>{formatPressure(Math.floor(weather.current.pressureMsl), 'hpa')}</span
 							>
 						</div>
 						<div class="flex space-x-1">
-							<Wind class="h-4 w-4" />
+							<WindIcon class="h-4 w-4" />
 							<span class="text-sm">{Math.round(weather.current.windSpeed10m)} km/h</span>
 						</div>
 					</div>

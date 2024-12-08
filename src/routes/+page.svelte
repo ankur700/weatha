@@ -3,17 +3,18 @@
 	import DailyForecast from '$lib/components/DailyForecast.svelte';
 	import ErrorDisplay from '$lib/components/ErrorDisplay.svelte';
 	import HourlyForecast from '$lib/components/HourlyForecast.svelte';
+	import { CircleX, History, MapPin } from '$lib/components/icons';
 	import LoadingSpinner from '$lib/components/LoadingSpinner.svelte';
+	import ThemeSwitcer from '$lib/components/ThemeSwitcer.svelte';
 	import WeatherDisplay from '$lib/components/WeatherDisplay.svelte';
+	import { weatherStore } from '$lib/stores/weatherStore';
 	import { ClearAllPopup, LocateMePopup, popupCombobox, popupFocusBlur } from '$lib/utils';
 	import {
 		getCoordinatesFromCity,
 		getReverseGeocode,
 		getWeatherDataFromCoordinates
 	} from '$lib/weather';
-	import { weatherStore } from '$lib/weatherStore';
 	import { ListBox, ListBoxItem, popup } from '@skeletonlabs/skeleton';
-	import { CircleX, History, MapPin } from 'lucide-svelte';
 	import { fade } from 'svelte/transition';
 
 	let cityName: string = $state('');
@@ -23,7 +24,6 @@
 	let address: string = $state('');
 	let currentHour: number = $state(new Date().getHours());
 	let comboboxValue: string | null = $state(null);
-
 	let lastFiveQueries: StoredEntry[] = $state([]);
 
 	$effect(() => {
@@ -119,9 +119,38 @@
 	}
 </script>
 
+<div class="mb-2 relative flex items-center justify-end gap-2">
+	<ThemeSwitcer />
+	<button
+		class="variant-filled-surface btn btn-sm justify-center rounded-md"
+		use:popup={popupCombobox}
+		disabled={lastFiveQueries.length === 0}
+	>
+		<span class="text-xs capitalize">{comboboxValue ?? 'History'}</span>
+		<History class="h-4 w-4" />
+	</button>
+	<div
+		in:fade={{ duration: 1000 }}
+		class="card variant-filled-surface w-48 py-2 z-50 shadow-xl"
+		data-popup="popupCombobox"
+	>
+		<ListBox class="variant-filled-surface" rounded="rounded-none">
+			{#each lastFiveQueries as query}
+				<ListBoxItem
+					bind:group={comboboxValue}
+					on:change={handleSelect}
+					name="medium"
+					class="text-xs"
+					value={query.cityName}>{query.cityName}</ListBoxItem
+				>
+			{/each}
+		</ListBox>
+		<div class="variant-glass-surface arrow"></div>
+	</div>
+</div>
 <div
 	in:fade={{ duration: 1500 }}
-	class="card variant-glass-surface mx-auto w-full space-y-4 rounded-2xl p-4"
+	class="card z-40 variant-glass-surface mx-auto w-full max-w-2xl space-y-4 rounded-2xl p-4"
 >
 	<header class="card-header">
 		<div class="flex items-center justify-center gap-4">
@@ -142,40 +171,15 @@
 			</form>
 			<button
 				type="button"
-				class="variant-filled-primary btn btn-icon [&>*]:pointer-events-none"
+				class="variant-filled-surface btn btn-icon [&>*]:pointer-events-none"
 				use:popup={LocateMePopup}
 				onclick={locateMe}><MapPin class="h-4 w-4" /></button
 			>
-			<div class="variant-glass-primary rounded-md p-2" data-popup="locateMePopup">
+			<div class="variant-glass-surface rounded-md p-2" data-popup="locateMePopup">
 				<p class="text-xs">Locate Me</p>
 				<div class="variant-glass-surface arrow"></div>
 			</div>
-			<button
-				class="variant-filled-surface btn btn-sm justify-center rounded-md"
-				use:popup={popupCombobox}
-				disabled={lastFiveQueries.length === 0}
-			>
-				<span class="text-xs capitalize">{comboboxValue ?? 'History'}</span>
-				<History class="h-3 w-3" />
-			</button>
-				<div
-					in:fade={{ duration: 1000 }}
-					class="card variant-filled-surface w-48 py-2 shadow-xl"
-					data-popup="popupCombobox"
-				>
-					<ListBox class="variant-filled-surface" rounded="rounded-none">
-						{#each lastFiveQueries as query}
-							<ListBoxItem
-								bind:group={comboboxValue}
-								on:change={handleSelect}
-								name="medium"
-								class="text-xs"
-								value={query.cityName}>{query.cityName}</ListBoxItem
-							>
-						{/each}
-					</ListBox>
-					<div class="variant-glass-surface arrow"></div>
-				</div>
+
 			<button
 				type="button"
 				class="variant-filled-surface btn btn-icon [&>*]:pointer-events-none"

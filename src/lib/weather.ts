@@ -53,14 +53,7 @@ export async function getWeatherDataFromCoordinates(lat: number, lon: number) {
 			'precipitation_probability_max',
 			'wind_speed_10m_max'
 		],
-		models: [
-			'best_match',
-			'bom_access_global',
-			'gem_global',
-			'ukmo_seamless',
-			'ukmo_global_deterministic_10km',
-			'ukmo_uk_deterministic_2km'
-		],
+		models: ['best_match'],
 		timezone: 'auto',
 		timeformat: 'unixtime'
 	};

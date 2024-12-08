@@ -1,7 +1,7 @@
 <script lang="ts">
+	import { CloudRain, WindIcon } from '$lib/components/icons';
+	import { weatherStore } from '$lib/stores/weatherStore';
 	import { getDayFromISOTimestamp } from '$lib/utils';
-	import { weatherStore } from '$lib/weatherStore';
-	import { CloudRain, Wind } from 'lucide-svelte';
 	import WeatherIcon from './WeatherIcon.svelte';
 
 	let weather = $weatherStore;
@@ -14,7 +14,6 @@
 		lowest = Math.round(Math.min(...weather.daily.temperature2mMin));
 		highest = Math.round(Math.max(...weather.daily.temperature2mMax));
 		tempRange = highest - lowest;
-		console.log(lowest, highest, tempRange);
 	})
 
 </script>
@@ -35,7 +34,7 @@
 								<td class="table-cell-fit"><WeatherIcon code={weather.daily.weatherCode[i]} size="xs" /></td>
 								<td class="table-cell-fit">
 									<div class="flex items-center gap-1">
-										<Wind class="h-4 w-4" />
+										<WindIcon class="h-4 w-4" />
 										{Math.round(weather.daily.windSpeed10mMax[i])}
 										<span class="text-xs">mph</span>
 									</div>
@@ -50,8 +49,8 @@
 								<td>
 									<div class="flex items-center gap-1">
 										<span>{Math.round(weather.daily.temperature2mMin[i])}°</span>
-										<div class="relative rounded-md w-full h-2 bg-surface-700">
-											<div class="absolute rounded-md h-full bg-primary-500" style="left: {((Math.round(weather.daily.temperature2mMin[i]) - lowest) / tempRange) * 100}%; width: {((Math.round(weather.daily.temperature2mMax[i]) - Math.round(weather.daily.temperature2mMin[i])) / tempRange) * 100}%"></div>
+										<div class="relative rounded-md w-full h-2 bg-surface-300 dark:bg-surface-700">
+											<div class="absolute rounded-md h-full bg-surface-500 dark:bg-surface-300" style="left: {((Math.round(weather.daily.temperature2mMin[i]) - lowest) / tempRange) * 100}%; width: {((Math.round(weather.daily.temperature2mMax[i]) - Math.round(weather.daily.temperature2mMin[i])) / tempRange) * 100}%"></div>
 										</div>
 										<span>{Math.round(weather.daily.temperature2mMax[i])}°</span>
 									</div>

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { weatherStore } from '$lib/weatherStore';
+	import { weatherStore } from '$lib/stores/weatherStore';
 	import WeatherIcon from './WeatherIcon.svelte';
 
 	let weather = $weatherStore;
@@ -15,7 +15,7 @@
 	});
 </script>
 
-<section class="flex snap-x snap-mandatory scroll-px-4 hide-scrollbar gap-4 overflow-x-auto scroll-smooth py-2">
+<section class="flex snap-x snap-mandatory cursor-ew-resize scroll-px-4 hide-scrollbar gap-4 overflow-x-auto scroll-smooth py-2">
 	{#if DayHours && weather}
 		{#each DayHours as time, index}
 			<div class="bg-transparent shrink-0 snap-start p-2 text-center w-20">

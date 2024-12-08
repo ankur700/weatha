@@ -20,6 +20,8 @@ declare global {
 		cityName: string;
 	}
 
+	type Theme = 'light' | 'dark';
+
 	interface WeatherData {
 		current: {
 			time: Date;
